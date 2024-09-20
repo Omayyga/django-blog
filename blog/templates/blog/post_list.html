@@ -7,17 +7,12 @@
         <header>
             <h1><a href="/"> Django Blog App</a></h1>
         </header>
-
+    {% for post in posts %}
         <article>
-            <time>published: 01.01.1999, 00:00</time>
-            <h2><a href=""> Test </a></h2>
-            <p>This is a test.</p>
+            <h2><a href = "">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+            <time>published @: {{ post.published }}</time>
         </article>
-
-        <article>
-            <time>published: 01.02.2000, 00:30</time>
-            <h2><a href=""> Test 2 </a></h2>
-            <p>This is the second test paragraph.</p>
-        </article>
+    {% endfor %}
     </body>
 </html>
