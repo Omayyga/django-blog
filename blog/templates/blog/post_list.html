@@ -1,18 +1,13 @@
-<!DOCTYPE html> 
-<html>
-    <head>
-        <title>Django Blog App</title>
-    </head>
-    <body>
-        <header>
-            <h1><a href="/"> Django Blog App</a></h1>
-        </header>
+{% extends 'blog/base.html' %}
+
+{% block content %}
     {% for post in posts %}
-        <article>
-            <h2><a href = "">{{ post.title }}</a></h2>
+        <article class = "post">
+            <h2><a href = "{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <p>{{ post.text|linebreaksbr }}</p>
-            <time>published @: {{ post.published }}</time>
+            <time class = "date">
+                {{ post.published }}
+            </time>
         </article>
     {% endfor %}
-    </body>
-</html>
+{% endblock %}
