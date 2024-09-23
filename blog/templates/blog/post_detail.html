@@ -1,7 +1,14 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/main.html' %}
 
 {% block content %}
     <article class = "post">
+        <aside class = "actions"></aside>
+        {% if user.is_authenticated %}
+            <a class = "btn btn-secondary" href = "{% url 'edit_post' pk=post.pk %}">
+                {% include './icons/edit_icon.svg' %}
+            </a>
+        {% endif %}
+        </aside>
         <h2>{{ post.title }}</h2>
         <p>{{ post.text|linebreaksbr }}</p>
             {% if post.published %}
